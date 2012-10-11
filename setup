@@ -1,8 +1,7 @@
 # -*-shell-script-*-
 
-# Install everything from pkg_dir
-mkdir -p $app_dir/app
-cp -a $pkg_dir/* $app_dir/app
+# Install everything from pkg_dir including .meteor directory
+cp -a $pkg_dir/ $app_dir/app
 
 
 # install the meteor runtime (because - well this is just how it works now)
