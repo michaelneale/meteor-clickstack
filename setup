@@ -1,19 +1,26 @@
 # -*-shell-script-*-
 
 # Install everything from pkg_dir
-cp -a $pkg_dir/* $app_dir/
+mkdir -p $app_dir/app
+cp -a $pkg_dir/* $app_dir/app
 
+
+# install the meteor runtime (because - well this is just how it works now)
+unzip -q $plugin_dir/meteor.zip -d $app_dir
 
 # write the start control file:
 cat > "$control_dir/start" << EOF
 #!/bin/sh
-cd $app_dir
+
+cd $app_dir/app
 
 # apply vars as environment variables
 export $(cat $app_dir/.genapp/control/env)
-exec $plugin_dir/meteor/meteor --port $app_port
+
+exec $app_dir/meteor/meteor --port $app_port
 
 EOF
+
 
 # start must be executable
 chmod 755 "$control_dir/start"
