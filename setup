@@ -1,0 +1,21 @@
+# -*-shell-script-*-
+
+# Install everything from pkg_dir
+cp -a $pkg_dir/* $app_dir/
+
+
+# write the start control file:
+cat > "$control_dir/start" << EOF
+#!/bin/sh
+cd $app_dir
+
+# apply vars as environment variables
+export $(cat $app_dir/.genapp/control/env)
+meteor/meteor --port $app_port
+EOF
+
+# start must be executable
+chmod 755 "$control_dir/start"
+
+
+
