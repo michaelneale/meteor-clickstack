@@ -11,7 +11,8 @@ cd $app_dir
 
 # apply vars as environment variables
 export $(cat $app_dir/.genapp/control/env)
-meteor/meteor --port $app_port
+exec $plugin_dir/meteor/meteor --port $app_port
+
 EOF
 
 # start must be executable
