@@ -1,4 +1,10 @@
 # -*-shell-script-*-
+set -x
+
+chmod 770 $app_dir
+mkdir -m 770 $app_dir/app
+mkdir -m 770 $app_dir/meteor
+
 
 # Install everything from pkg_dir including .meteor directory
 cp -a $pkg_dir/ $app_dir/app
@@ -6,6 +12,8 @@ cp -a $pkg_dir/ $app_dir/app
 
 # install the meteor runtime (because - well this is just how it works now)
 unzip -q $plugin_dir/meteor.zip -d $app_dir/meteor
+
+chmod 770 $app_dir/meteor
 
 # write the start control file:
 cat > "$control_dir/start" << EOF
