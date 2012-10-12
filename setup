@@ -1,19 +1,15 @@
 # -*-shell-script-*-
 set -x
 
-chmod 770 $app_dir
-mkdir -m 770 $app_dir/app
-mkdir -m 770 $app_dir/meteor
-
-
 # Install everything from pkg_dir including .meteor directory
 cp -a $pkg_dir/ $app_dir/app
 
+#remove old local db if there
+rm -rf $app_dir/app/.meteor/local/db
 
 # install the meteor runtime (because - well this is just how it works now)
 unzip -q $plugin_dir/meteor.zip -d $app_dir/meteor
 
-chmod 770 $app_dir/meteor
 
 # write the start control file:
 cat > "$control_dir/start" << EOF
@@ -28,6 +24,9 @@ exec $app_dir/meteor/meteor --port $app_port
 
 EOF
 
+# let the app do what it wants
+chown -R g+w $app_dir/app
+chown -R g+w $app_dir/meteor
 
 # start must be executable
 chmod 755 "$control_dir/start"
