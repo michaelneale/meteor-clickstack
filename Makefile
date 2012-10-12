@@ -12,7 +12,7 @@ meteor-refresh: clean
 
 package:
 	mkdir -p build
-	jar cvf $(build_dir)/meteor-clickstack.zip setup meteor.zip
+	zip $(build_dir)/meteor-clickstack.zip setup meteor.zip
 	echo "Now upload $(build_dir)/meteor-clickstack.zip"
 
 clean:
