@@ -25,8 +25,9 @@ exec $app_dir/meteor/meteor --port $app_port
 EOF
 
 # let the app do what it wants
-chown -R g+w $app_dir/app
-chown -R g+w $app_dir/meteor
+chmod -R g+w $app_dir/app
+chmod -R g+w $app_dir/meteor
+
 
 # start must be executable
 chmod 755 "$control_dir/start"
