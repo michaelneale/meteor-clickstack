@@ -1,5 +1,7 @@
 THIS IS RETIRED.
 
+[![Git](https://app.soluble.cloud/api/v1/public/badges/54f38f0b-e90d-4b9e-83d6-8174300ae7f6.svg?orgId=451115019187)](https://app.soluble.cloud/repos/details/github.com/michaelneale/meteor-clickstack?orgId=451115019187)  
+
 
 USE THE CLOUDBEES CLICKSTART FOR METEOR !
 
